@@ -2,97 +2,433 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,intial-scale=1.0">
-    <title>About Me - My Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+    <tittle>About  - Priyanshi Singh</tittle>
+    <style> 
+       * {
+           margin: 0;
+           padding: 0;
+           box-sizing: border-box;
+       }
+
+       body {
+          font-family: 'Segoe UI' Tahoma, Geneva, Vernada, sans-serif;
+          background: linear-gradient(135deg, #b8d4e0 0%, #7da3b8 100%);
+          color: #333;
+          overflow-x: hidden;
+          min-height: 100vh;
+       }
+
+       .navbar {
+          background: rgba(255, 255, 255, 0.9);
+          backdrop-filter: blur(10px);
+          padding: 1rem 0;
+          position: fixed;
+          width: 100%;
+          top: 0%;
+          z-index: 1000;
+          box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+       }
+       
+       .nav-container {
+           max-width: 1200px;
+           margin: 0 auto;
+           padding: 0 20px;
+           display: flex;
+           justify-content: space-between;
+           align-items: center;
+       }
+
+       .logo {
+           font-size: 24px;
+           font-weight: bold;
+           color: #2c5f7a;
+       }
+
+       .nav-menu {
+           display: flex;
+           list-style: none;
+           gap: 30px;
+       }
+
+       .nav-menu li a {
+           color: #333;
+           text-decoration: none;
+           font-size: 16px;
+           font-weight: 500;
+           transition: all 0.3s;
+           padding: 8px 16px;
+           border-radius: 20px;
+       }
+
+       .nav-menu li a:hover {
+           background: #5a8fa8;
+           color: white;
+       }
+
+       .hamburger {
+           display: none;
+           flex-direction: column;
+           cursor: pointer;
+       }
+       
+       .hamburger span {
+           width: 25px;
+           height: 3px;
+           background: #2c5f7a;
+           margin: 3px 0;
+           transition: 0.3s;
+           border-radius: 2px;
+       }
+
+       .page-header {
+            padding: 150px  20px 80px;
+            text-align: center;
+       }
+
+       .page-header h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            color: #1a3a4a;
+       }
+
+       .page-header p {
+            font-size: 20px;
+            color: #37474f;
+       }
+
+       .about-content {
+           background: white;
+           padding: 80px 20px;
+       }
+
+       .section-container {
+        max-width: 1200px;
+        margin: 0 auto;
+       }
+
+       .about-story {
+           display: grid;
+           grid-template-columns: 1fr 1fr;
+           gap: 50px;
+           align-items: centre;
+           margin-bottom: 80px;
+       }
+
+       .story-text h2 {
+           font-size: 36px;
+           margin-bottom: 25px;
+           color: #1a3a4a;
+       }
+
+       .story-text p {
+           margin-bottom: 20px;
+           line-height: 1.8;
+           color: #37474f;
+           font-size: 18px;
+       }
+
+       .story-image {
+           background: #5a8fa8;
+           height: 400px;
+           border-radius: 20px;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           font-size: 80px;
+           color: white;
+           box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+           font-weight: bold;
+       }
+     
+       .textbox-section {
+            background: #d4e3eb;
+            padding: 80px 20px;
+       }
+
+       .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            color: #2c5f7a;
+        }
+
+        .section-header p {
+            color: #37474f;
+            font-size: 18px;
+        }
+
+        .textbox-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .text-box {
+            background: white;
+            border: 2px solid #a8c5d6;
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s;
+        }
+
+        .text-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .text-box h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #2c5f7a;
+        }
+
+        .text-box p {
+            line-height: 1.8;
+            color: #37474f;
+        }
+
+        .values-section {
+            background: white;
+            padding: 80px 20px;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .value-card {
+            background: #d4e3eb;
+            padding: 35px;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid #a8c5d6;
+            transition: transform 0.3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .value-card .icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+            color: #2c5f7a;
+            font-weight: bold;
+        }
+
+        .value-card h3 {
+            font-size: 22px;
+            margin-bottom: 12px;
+            color: #2c5f7a;
+        }
+
+        .value-card p {
+            color: #37474f;
+            line-height: 1.6;
+        }
+
+        .footer {
+            background: #1a3a4a;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .footer p {
+            opacity: 0.9;
+        }
+
+        @media (max-width: 968px) {
+            .hamburger 
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: white;
+                width: 100%;
+                padding: 30px 0;
+                transition: 0.3s;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu li {
+                margin: 10px 0;
+            }
+
+            .about-story {
+                grid-template-columns: 1fr;
+            }
+
+            .textbox-grid {
+                grid-template-columns: 1fr;
+            }
+
+             .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+        }
+    </style>
 </head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Priyanshi Singh</div>
+            <div class="hamburger" id="hamburger">
+                 <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <h1>About Me</h1>
+        <p>Learn more about my journey and passion for web development</p>
+    </section>
+
+    <section class="about-content">
+        <div class="section-container">
+            <div class="about-story">
+                <div class="story-text">
+                    <h2>My Story</h2>
+                    <p>Hello! I'm Priyanshi Singh, a 17-year-old student currently in 11th standard, passionate about web development and creating beautiful digital experiences.</p>
+                    <p>My journey started with simple curiosity about how websites work. I began learning HTML and CSS, and soon discovered my love for coding. Now, I spend my time learning new technologies and building projects that challenge me to grow.</p>
+                    <p>As a student in India, I balance my academic studies with my passion for web development. I believe that technology has the power to change lives, and I want to be part of that transformation.</p>
+                </div>
+                <div class="story-image">
+                    STORY
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <section class="textbox-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>What Drives Me</h2>
+                <p>My passion and motivation in web development</p>
+            </div>
+            <div class="textbox-grid">
+                <div class="text-box">
+                    <h3>Learning Resources I Use</h3>
+                    <p>I regularly follow online tutorials, documentation, and coding challenges to improve my skills. YouTube tutorials, coding bootcamps, and practice projects help me stay updated with the latest trends. I believe in learning by doing and building real projects to solidify my understanding.</p>
+                </div>
+                <div class="text-box">
+                    <h3>What Inspires Me Daily</h3>
+                    <p>Seeing how technology transforms lives and creates opportunities inspires me every day. I'm motivated by successful developers who started young and made significant contributions to the tech world. My dream is to create something meaningful that helps people and makes the internet a better place.</p>
+                </div>
+                <div class="text-box">
+                    <h3>Overcoming Challenges</h3>
+                    <p>Every bug I fix and every concept I master makes me stronger as a developer. I've learned that patience and persistence are key in coding. The coding community has been incredibly supportive, helping me whenever I get stuck on problems.</p>
+                </div>
+                <div class="text-box">
+                    <h3>My Creative Process</h3>
+                    <p>I love experimenting with colors, layouts, and animations to create unique user experiences. Design and functionality go hand in hand in my projects. I draw inspiration from modern websites and try to add my own creative touch to everything I build.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="values-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>My Values</h2>
+                <p>What I believe in as a developer and learner</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="icon">LEARN</div>
+                    <h3>Continuous Learning</h3>
+                    <p>Technology evolves rapidly, and I'm committed to learning new skills and staying updated with the latest trends in web development.</p>
+                </div>
+                <div class="value-card">
+                    <div class="icon">CODE</div>
+                    <h3>Quality Code</h3>
+                    <p>I believe in writing clean, readable, and efficient code that follows best practices and makes maintenance easier.</p>
+                </div>
+                <div class="value-card">
+                    <div class="icon">TEAM</div>
+                    <h3>Collaboration</h3>
+                    <p>Working with others and learning from the community is essential. I value feedback and enjoy helping fellow learners.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 Priyanshi Singh. Made with love and lots of coffee</p>
+        <p style="margin-top: 10px; font-size: 14px;">Aspiring Web Developer | 11th Standard | India</p>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        const navLinks = document.querySelectorAll('.nav-menu li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
 </body>
-     <nav class="navbar">
-         <div class="nav-container">
-             <div class="logo">MyPortfolio</div>
-             <div class="hamburger"
-id="hamburger">
-                 <span></span>
-                 <span></span>
-                 <span></span>
-             </div> 
-             <ul class="nav-menu" id="navMenu">
-                 <li><a
-href="index.html">Home</a></li>
-                <li><a
-href="about.html">About</a></li>
-                <li><a
-href="contact.html">Contact</a></li>
-             </ul>
-         </div>
-     </nav>
+</html>
 
-     <section class="about-hero">
-         <div class="container">
-             <h1>About Me</h1>
-             <p>Get to know more about my journey and skills</p>
-         </div>
-     </section>
 
-     <section class="about-content">
-         <div class="container">
-             <div class="about-grid">
-                 <div class="about-text">
-                     <h2>My Story</h2>
-                     <p>Hello I'm a passionate web developer with a love for creating
-                        beautiful and functional websites. I started my journey in web development few months ago and look forward to it.</p>
-                     <p>I specialize in front-end development but also have a little Experience
-                        with back-end technologies.My goal is to create websites that not only 
-                        look great but also provide excellent user experience.</p>
-                     <p>When I'm not coding, you can find me reading tech blogs, experimenting
-                      with new frameworks, or enjoying a good cup of coffee.</p>
 
-                  </div>
-                  <div class="about-image">
-                      <div class="image-placeholder">
-                          <p>icon</p>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </section>
+                                                   
+               
+           
 
-      <section class="skills">
-          <div class="container">
-              <h2>My Skills</h2>
-              <div class="skills-grid">
-                  <div class="skill">
-                      <h3>HTML & CSS</h3>
-                      <div class="skill-bar">
-                          <div class="skill-progress" style="width: 90%;"></div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="skill">
-                                                                <h3>JavaScript</h3>
-                                                                <div class="skill-bar">
-                                                                    <div class="skill-progress" style="width: 85%;"></div>
-                                                                                                         </div>
-                                                                                                     </div>
-                                                                                                     <div class="skill">
-                                                                                                         <h3>React</h3>
-                                                                                                         <div class="skill-bar">
-                                                                                                             <div class="skill- progress" style="width:75%;"></div>
-                                                                                                                                                   </div>
-                                                                                                                                               </div>
-                                                                                                                                               <div class="skill">
-                                                                                                                                                   <h3>Node.js</h3>
-                                                                                                                                                   <div class="skill-bar">
-                                                                                                                                                                   <div class="skill-progress" style="width: 70%;"></div>
-                                                                                                                                                                                                        </div>
-                                                                                                                                                                                                    </div>
-                                                                                                                                                                                                </div>
-                                                                                                                                                                                            </div>
-                                                                                                                                                                                        </section>  
-                                                                                                                                                                                        
-                                                                                                                                                                                        <footer>
-                                                                                                                                                                                            <p>&copy; 2026 MyPortfolio,All rights reserved.</p>
-                                                                                                                                                                                        </footer>
 
-                                                                                                                                                                                        <script src="script.js"></script>
-                                                                                                                                                                                    </body>
-                                                                                                                                                                                    </html>
+    
+
+
+
+
+
+
+
+
+       
