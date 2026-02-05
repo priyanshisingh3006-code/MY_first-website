@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gallery</title>
+<title>Before After</title>
 <style>
 body{
     margin:0;
@@ -13,26 +13,41 @@ body{
 }
 .gallery{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:25px;
 }
-.gallery img{
+.card{
+    background:white;
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,0.18);
+}
+.card img{
     width:100%;
-    height:100%;
-    object-fit:cover;
-    border-radius:12px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.2);
-    transition:0.3s;
+    height:auto;
+    display:block;
 }
-.gallery img:hover{
-    transform:scale(1.05);
+.title{
+    padding:15px;
+    font-size:18px;
+    font-weight:600;
+    text-align:center;
 }
 </style>
 </head>
 <body>
+
 <div class="gallery">
-<img src="Screenshot.png">
-<img src="Screenshot2.png">
+    <div class="card">
+        <img src="Screenshot.png">
+        <div class="title">Before</div>
+    </div>
+
+    <div class="card">
+        <img src="Screenshot.png">
+        <div class="title">After</div>
+    </div>
 </div>
+
 </body>
 </html>
