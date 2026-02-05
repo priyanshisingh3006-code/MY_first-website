@@ -84,6 +84,38 @@
         .page-header {
             padding: 150px 20px 80px;
             text-align: center;
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
         .page-header h1 {
@@ -119,13 +151,31 @@
             border: 2px solid #a8c5d6;
             border-radius: 15px;
             padding: 30px;
-            transition: all 0.3s;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .skill-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(90, 143, 168, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+
+        .skill-card:hover::after {
+            transform: translateX(100%);
         }
 
         .skill-card:hover {
             border-color: #5a8fa8;
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
         }
 
         .skill-header {
@@ -161,8 +211,37 @@
             height: 100%;
             background: #5a8fa8;
             border-radius: 10px;
-            transition: width 2s ease;
+            transition: all 0.4s ease;
             box-shadow: 0 2px 8px rgba(90, 143, 168, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.3), 
+                transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        .skill-card:hover .skill-progress {
+            box-shadow: 0 4px 12px rgba(90, 143, 168, 0.5);
         }
 
         .skill-description {
@@ -203,12 +282,15 @@
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
+            transition: all 0.4s ease;
             border: 2px solid #a8c5d6;
+            cursor: pointer;
         }
 
         .project-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+            border-color: #5a8fa8;
         }
 
         .project-image {
@@ -221,6 +303,29 @@
             font-size: 40px;
             color: white;
             font-weight: bold;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3), transparent);
+            transform: scale(0);
+            transition: transform 0.6s;
+        }
+
+        .project-card:hover .project-image::before {
+            transform: scale(1);
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.1);
         }
 
         .project-content {
@@ -314,10 +419,10 @@
                 <span></span>
             </div>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="skills.html">Skills</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="about">About</a></li>
+                <li><a href="skills">Skills</a></li>
+                <li><a href="contact">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -441,11 +546,6 @@
         </div>
     </section>
 
-    <footer class="footer">
-        <p>&copy; 2024 Priyanshi Singh. Made with love and lots of coffee</p>
-        <p style="margin-top: 10px; font-size: 14px;">Aspiring Web Developer | 11th Standard | India</p>
-    </footer>
-
     <script>
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('navMenu');
@@ -461,6 +561,22 @@
                 hamburger.classList.remove('active');
                 navMenu.classList.remove('active');
             });
+        });
+
+        const skillCards = document.querySelectorAll('.skill-card');
+        const skillObserver = new IntersectionObserver(function(entries) {
+            entries.forEach((entry, index) => {
+                if(entry.isIntersecting) {
+                    setTimeout(function() {
+                        entry.target.style.animation = 'slideInLeft 0.6s ease forwards';
+                    }, index * 100);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        skillCards.forEach(card => {
+            card.style.opacity = '0';
+            skillObserver.observe(card);
         });
 
         window.addEventListener('scroll', function() {
@@ -483,6 +599,16 @@
                 setTimeout(function() {
                     progress.style.width = progressValue + '%';
                 }, 200);
+            });
+        });
+
+        const projectCards = document.querySelectorAll('.project-card');
+        projectCards.forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.animation = 'bounce 0.5s ease';
+                setTimeout(() => {
+                    this.style.animation = '';
+                }, 500);
             });
         });
     </script>

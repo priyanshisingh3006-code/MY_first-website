@@ -84,6 +84,38 @@
         .page-header {
             padding: 150px 20px 60px;
             text-align: center;
+            animation: fadeIn 0.8s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
         }
 
         .page-header h1 {
@@ -92,7 +124,7 @@
             color: #1a3a4a;
         }
 
-         .page-header p {
+        .page-header p {
             font-size: 20px;
             color: #37474f;
         }
@@ -119,9 +151,16 @@
             border-radius: 20px;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
             border: 2px solid #a8c5d6;
+            animation: slideIn 0.8s ease;
+            transition: transform 0.3s ease;
         }
 
-         .contact-info h2 {
+        .contact-info:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .contact-info h2 {
             font-size: 28px;
             margin-bottom: 20px;
             color: #2c5f7a;
@@ -139,12 +178,21 @@
             background: #d4e3eb;
             border-radius: 12px;
             border: 2px solid #a8c5d6;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .info-box:hover {
+            transform: translateX(10px);
+            border-color: #5a8fa8;
+            box-shadow: 0 5px 15px rgba(90, 143, 168, 0.2);
+            background: #c8dce8;
         }
 
         .info-box h3 {
             font-size: 18px;
             color: #2c5f7a;
-             margin-bottom: 10px;
+            margin-bottom: 10px;
         }
 
         .info-box p {
@@ -169,7 +217,7 @@
             flex-wrap: wrap;
         }
 
-         .social-icons a {
+        .social-icons a {
             background: #5a8fa8;
             color: white;
             padding: 12px 24px;
@@ -191,6 +239,7 @@
             border-radius: 20px;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
             border: 2px solid #a8c5d6;
+            animation: slideIn 0.8s ease 0.2s both;
         }
 
         .contact-form-wrapper h2 {
@@ -208,7 +257,7 @@
             margin-bottom: 25px;
         }
 
-         .form-group label {
+        .form-group label {
             display: block;
             margin-bottom: 8px;
             color: #2c5f7a;
@@ -223,16 +272,17 @@
             border: 2px solid #a8c5d6;
             border-radius: 10px;
             font-size: 16px;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: white;
         }
 
-         .form-group input:focus,
+        .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
             border-color: #5a8fa8;
-            box-shadow: 0 0 15px rgba(90, 143, 168, 0.2);
+            box-shadow: 0 0 20px rgba(90, 143, 168, 0.3);
+            transform: scale(1.02);
         }
 
         .form-group textarea {
@@ -279,7 +329,7 @@
             border: 2px solid #c3e6cb;
         }
 
-          @keyframes slideIn {
+        @keyframes slideIn {
             from {
                 opacity: 0;
                 transform: translateY(-10px);
@@ -301,7 +351,7 @@
             opacity: 0.9;
         }
 
-         @media (max-width: 968px) {
+        @media (max-width: 968px) {
             .hamburger {
                 display: flex;
             }
@@ -322,7 +372,7 @@
                 left: 0;
             }
 
-             .nav-menu li {
+            .nav-menu li {
                 margin: 10px 0;
             }
 
@@ -335,7 +385,7 @@
                 padding: 30px;
             }
 
-             .hamburger.active span:nth-child(1) {
+            .hamburger.active span:nth-child(1) {
                 transform: rotate(-45deg) translate(-5px, 6px);
             }
 
@@ -346,6 +396,7 @@
             .hamburger.active span:nth-child(3) {
                 transform: rotate(45deg) translate(-5px, -6px);
             }
+        }
     </style>
 </head>
 <body>
@@ -358,10 +409,10 @@
                 <span></span>
             </div>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="skills.html">Skills</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="about">About</a></li>
+                <li><a href="skills">Skills</a></li>
+                <li><a href="contact">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -379,8 +430,13 @@
                     <p>Feel free to reach out to me for any inquiries, project collaborations, or just to say hello!</p>
                     
                     <div class="info-box">
+                        <h3>Email</h3>
+                        <p>priyanshi.singh30.06@gmail.com</p>
+                    </div>
+                    
+                    <div class="info-box">
                         <h3>Phone</h3>
-                        <p>+91 98765 43210</p>
+                        <p>+91 8588883189</p>
                     </div>
                     
                     <div class="info-box">
@@ -399,7 +455,7 @@
                     </div>
                 </div>
 
-                 <div class="contact-form-wrapper">
+                <div class="contact-form-wrapper">
                     <h2>Send Me a Message</h2>
                     <p class="subtitle">Fill out the form below and I'll get back to you as soon as possible!</p>
                     <form id="contactForm">
@@ -412,8 +468,13 @@
                             <label for="email">Your Email</label>
                             <input type="email" id="email" name="email" placeholder="Enter your email address" required>
                         </div>
-
-                         <div class="form-group">
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" placeholder="What's this about?" required>
+                        </div>
+                        
+                        <div class="form-group">
                             <label for="message">Your Message</label>
                             <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
                         </div>
@@ -425,11 +486,6 @@
             </div>
         </div>
     </section>
-
-    <footer class="footer">
-        <p>&copy; 2024 Priyanshi Singh. Made with love and lots of coffee</p>
-        <p style="margin-top: 10px; font-size: 14px;">Aspiring Web Developer | 11th Standard | India</p>
-    </footer>
 
     <script>
         const hamburger = document.getElementById('hamburger');
@@ -460,54 +516,57 @@
             const message = document.getElementById('message').value;
 
             if(name && email && subject && message) {
+                const mailtoLink = 'mailto:priyanshi.singh30.06@gmail.com' +
+                    '?subject=' + encodeURIComponent(subject) +
+                    '&body=' + encodeURIComponent(
+                        'From: ' + name + '\n' +
+                        'Email: ' + email + '\n\n' +
+                        'Message:\n' + message
+                    );
+                
+                window.location.href = mailtoLink;
+                
                 messageBox.className = 'message-box success show';
-                messageBox.textContent = 'Thank you ' + name + '! Your message has been sent successfully. I will get back to you soon!'; 
-
-                contactForm.reset();
-
+                messageBox.textContent = 'Opening your email client... Please send the email from there!';
+                
                 setTimeout(function() {
                     messageBox.classList.remove('show');
-                }, 6000);
+                    contactForm.reset();
+                }, 4000);
             }
         });
 
         const formInputs = document.querySelectorAll('.form-group input, .form-group textarea');
+        formInputs.forEach((input, index) => {
+            input.style.opacity = '0';
+            input.style.animation = 'slideIn 0.5s ease forwards';
+            input.style.animationDelay = (index * 0.1) + 's';
+        });
+
+        const infoBoxes = document.querySelectorAll('.info-box');
+        infoBoxes.forEach((box, index) => {
+            box.style.opacity = '0';
+            box.style.animation = 'slideIn 0.5s ease forwards';
+            box.style.animationDelay = (index * 0.15) + 's';
+        });
+
+        const submitBtn = document.querySelector('.submit-btn');
+        submitBtn.addEventListener('mouseenter', function() {
+            this.style.animation = 'pulse 0.5s ease';
+        });
+        submitBtn.addEventListener('mouseleave', function() {
+            this.style.animation = '';
+        });
+
         formInputs.forEach(input => {
-            input.addEventListener('focus', function() {
-                this.style.transform = 'scale(1.01)';
-            });
-            
-            input.addEventListener('blur', function() {
-                this.style.transform = 'scale(1)';
+            input.addEventListener('input', function() {
+                if(this.value.length > 0) {
+                    this.style.borderColor = '#5a8fa8';
+                } else {
+                    this.style.borderColor = '#a8c5d6';
+                }
             });
         });
     </script>
 </body>
-</html> 
-
-        
-
-
-
-    
-                        
-
-
-
-
-
-
-
-         
-
-
-
-
-
-
-     
-    
-        
-
-        
-      
+</html>
