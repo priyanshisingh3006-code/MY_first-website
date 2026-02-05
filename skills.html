@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills - Priyanshi Singh</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #b8d4e0 0%, #7da3b8 100%);
+            color: #333;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c5f7a;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu li a {
+            color: #333;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+
+        .nav-menu li a:hover {
+            background: #5a8fa8;
+            color: white;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #2c5f7a;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .page-header {
+            padding: 150px 20px 80px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            color: #1a3a4a;
+        }
+
+        .page-header p {
+            font-size: 20px;
+            color: #37474f;
+        }
+
+        .skills-section {
+            background: white;
+            padding: 80px 20px;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .skill-card {
+            background: white;
+            border: 2px solid #a8c5d6;
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s;
+        }
+
+        .skill-card:hover {
+            border-color: #5a8fa8;
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            font-size: 20px;
+            color: #2c5f7a;
+        }
+
+        .skill-level {
+            font-size: 14px;
+            color: #666;
+            background: #d4e3eb;
+            padding: 5px 12px;
+            border-radius: 15px;
+        }
+
+        .skill-bar {
+            background: #d4e3eb;
+            height: 10px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: #5a8fa8;
+            border-radius: 10px;
+            transition: width 2s ease;
+            box-shadow: 0 2px 8px rgba(90, 143, 168, 0.3);
+        }
+
+        .skill-description {
+            color: #37474f;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        .projects-section {
+            background: #d4e3eb;
+            padding: 80px 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            color: #2c5f7a;
+        }
+
+        .section-header p {
+            color: #37474f;
+            font-size: 18px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            border: 2px solid #a8c5d6;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: #5a8fa8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-content h3 {
+            font-size: 22px;
+            margin-bottom: 12px;
+            color: #2c5f7a;
+        }
+
+        .project-content p {
+            color: #37474f;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: #d4e3eb;
+            padding: 6px 14px;
+            border-radius: 15px;
+            font-size: 12px;
+            color: #2c5f7a;
+            border: 1px solid #a8c5d6;
+        }
+
+        .footer {
+            background: #1a3a4a;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .footer p {
+            opacity: 0.9;
+        }
+
+        @media (max-width: 968px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: white;
+                width: 100%;
+                padding: 30px 0;
+                transition: 0.3s;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu li {
+                margin: 10px 0;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Priyanshi Singh</div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <h1>My Skills</h1>
+        <p>Technologies I'm learning and working with to build amazing projects</p>
+    </section>
+
+    <section class="skills-section">
+        <div class="section-container">
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <span class="skill-name">HTML5</span>
+                        <span class="skill-level">Advanced</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-progress="85"></div>
+                    </div>
+                    <p class="skill-description">Building semantic and accessible web pages with modern HTML5 elements and best practices.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <span class="skill-name">CSS3</span>
+                        <span class="skill-level">Advanced</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-progress="80"></div>
+                    </div>
+                    <p class="skill-description">Creating beautiful layouts with flexbox, grid, animations, and responsive design techniques.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <span class="skill-name">JavaScript</span>
+                        <span class="skill-level">Intermediate</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-progress="65"></div>
+                    </div>
+                    <p class="skill-description">Writing interactive web applications with DOM manipulation, events, and modern ES6+ features.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <span class="skill-name">Responsive Design</span>
+                        <span class="skill-level">Intermediate</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-progress="70"></div>
+                    </div>
+                    <p class="skill-description">Ensuring websites look great on all devices using media queries and mobile-first approach.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <span class="skill-name">Git & GitHub</span>
+                        <span class="skill-level">Beginner</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-progress="50"></div>
+                    </div>
+                    <p class="skill-description">Version control and collaboration using Git commands and managing repositories on GitHub.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <span class="skill-name">Bootstrap</span>
+                        <span class="skill-level">Beginner</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-progress="45"></div>
+                    </div>
+                    <p class="skill-description">Rapidly building responsive websites using Bootstrap's component library and grid system.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="projects-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>My Projects</h2>
+                <p>Some of the projects I've built while learning web development</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">WEB</div>
+                    <div class="project-content">
+                        <h3>Portfolio Website</h3>
+                        <p>A personal portfolio website showcasing my skills and projects with modern design and smooth animations.</p>
+                        <div class="project-tags">
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">TODO</div>
+                    <div class="project-content">
+                        <h3>To-Do List App</h3>
+                        <p>An interactive to-do list application with local storage to save tasks and help manage daily activities efficiently.</p>
+                        <div class="project-tags">
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">LocalStorage</span>
+                            <span class="tag">CSS</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">GAME</div>
+                    <div class="project-content">
+                        <h3>Simple Game</h3>
+                        <p>A fun browser-based game built with vanilla JavaScript to practice DOM manipulation and event handling.</p>
+                        <div class="project-tags">
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Game Logic</span>
+                            <span class="tag">Animation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 Priyanshi Singh. Made with love and lots of coffee</p>
+        <p style="margin-top: 10px; font-size: 14px;">Aspiring Web Developer | 11th Standard | India</p>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        const navLinks = document.querySelectorAll('.nav-menu li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        window.addEventListener('scroll', function() {
+            const skillProgress = document.querySelectorAll('.skill-progress');
+            skillProgress.forEach(progress => {
+                const progressValue = progress.getAttribute('data-progress');
+                const progressTop = progress.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if(progressTop < windowHeight - 100) {
+                    progress.style.width = progressValue + '%';
+                }
+            });
+        });
+
+        window.addEventListener('load', function() {
+            const skillProgress = document.querySelectorAll('.skill-progress');
+            skillProgress.forEach(progress => {
+                const progressValue = progress.getAttribute('data-progress');
+                setTimeout(function() {
+                    progress.style.width = progressValue + '%';
+                }, 200);
+            });
+        });
+    </script>
+</body>
+</html>
